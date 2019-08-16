@@ -1,6 +1,12 @@
 const express = require('express'),
     app = express(),
-    PORT = process.env.PORT || 5000
+    connectDB = require('./config/db')
+PORT = process.env.PORT || 5000
+
+connectDB()
+app.use(express.json({
+    extended: false
+}))
 
 app.get('/', (req, res) => res.json({
     msg: 'Hello'
